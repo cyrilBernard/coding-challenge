@@ -42,7 +42,7 @@ export class UserlistComponent implements OnInit {
     //     this.users = this.users.filter(u => u !== user);
     //   })
     var userid = "test";
-    this.open(content,userid,"delete");
+    this.open(content,userid);
   };
 
   editUser(user: User,content): void {
@@ -51,19 +51,15 @@ export class UserlistComponent implements OnInit {
     // this.router.navigate(['edit-user']);
     // var userid =localStorage.setItem("editUserId", user.id.toString());
     var userid = "test";
-    this.open(content,userid,"edit");
+    this.open(content,userid);
   };
-  open(content,userid:any,action:string) {
+  open(content,userid:any) {
     if(userid != null)
     {
       this.getTitle = "Edit Profile";
     }
     else{
       this.getTitle = "User Profile";
-    }
-    if(action =="delete")
-    {
-      this.getTitle = "Delete Profile";
     }
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;

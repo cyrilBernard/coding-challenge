@@ -1,0 +1,25 @@
+<div class="col-md-6">
+  <h2> User Account</h2>
+  <button class="btn btn-info" (click)="addUser()"><i class="fa fa-plus" aria-hidden="true"></i> Create New</button>
+ 
+      <div *ngFor="let user of users" class="col-md-8" style="border: solid 1px black;margin-top:20px;border-radius: 5px;">
+        <div class="row">
+            <div class="col-md-4" style="padding:10px;"><img style="height: 80px;width:80px;" src={{user.avatar}} ></div>
+            <div class="col-md-4" style="padding:10px;"><b><label style="font-size: 24px">{{user.first_name}}</label> <br/>12/14/2019</b></div>
+            <div class="col-md-4" style="padding:10px;">
+              <div class="col-md-12">
+                  <button class="btn" (click)="editUser(user)" style="float: right"> <i class="fa fa-edit" aria-hidden="true"></i></button>
+              </div>
+              <div class="col-md-12">
+                  <button class="btn" (click)="deleteUser(user)"  style="float: right"> <i class="fa fa-trash" aria-hidden="true"></i></button>
+                </div>
+          
+              
+            </div>
+        </div>
+        
+        </div>
+
+</div>
+
+

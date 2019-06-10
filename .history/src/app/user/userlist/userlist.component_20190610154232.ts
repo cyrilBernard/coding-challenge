@@ -47,8 +47,7 @@ export class UserlistComponent implements OnInit {
     // localStorage.removeItem("editUserId");
     // localStorage.setItem("editUserId", user.id.toString());
     // this.router.navigate(['edit-user']);
-    // var userid =localStorage.setItem("editUserId", user.id.toString());
-    var userid = "test";
+    var userid =localStorage.setItem("editUserId", user.id.toString());
     this.open(content,userid);
   };
   open(content,userid:any) {

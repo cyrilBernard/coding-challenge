@@ -1,13 +1,10 @@
-import { Component, OnInit, Inject, Injector, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {UserService} from "../../dataServices/user.service"
 import { User } from './../../model/user.model';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { isPlatformBrowser } from '@angular/common';
-import { NgModel } from '@angular/forms';
-import { settings } from 'cluster';
 
 @Component({
   selector: 'app-userlist',
@@ -17,15 +14,8 @@ import { settings } from 'cluster';
 export class UserlistComponent implements OnInit {
   users: User[];
   img: any;
-  getTitle: string;
   closeResult: string;
-  private modalService: NgbModal;
-  constructor(private router: Router, private userService: UserService,@Inject(PLATFORM_ID) private platformId: object,private injector:Injector) { 
-    if(isPlatformBrowser(this.platformId)){
-      this.modalService = this.injector.get(NgbModal);
-
-    }
-  }
+  constructor(private router: Router, private userService: UserService,private modalService: NgbModal) { }
 
   ngOnInit() {
     this.userService.getUsers()
@@ -43,22 +33,12 @@ export class UserlistComponent implements OnInit {
       })
   };
 
-  editUser(user: User,content): void {
-    // localStorage.removeItem("editUserId");
-    // localStorage.setItem("editUserId", user.id.toString());
-    // this.router.navigate(['edit-user']);
-    // var userid =localStorage.setItem("editUserId", user.id.toString());
-    var userid = "test";
-    this.open(content,userid);
+  editUser(user: User): void {
+    localStorage.removeItem("editUserId");
+    localStorage.setItem("editUserId", user.id.toString());
+    this.router.navigate(['edit-user']);
   };
-  open(content,userid:any) {
-    if(userid != null)
-    {
-      this.getTitle = "Edit Profile";
-    }
-    else{
-      this.getTitle = "User Profile";
-    }
+  open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {

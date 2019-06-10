@@ -17,7 +17,6 @@ import { settings } from 'cluster';
 export class UserlistComponent implements OnInit {
   users: User[];
   img: any;
-  getTitle: string;
   closeResult: string;
   private modalService: NgbModal;
   constructor(private router: Router, private userService: UserService,@Inject(PLATFORM_ID) private platformId: object,private injector:Injector) { 
@@ -47,18 +46,10 @@ export class UserlistComponent implements OnInit {
     // localStorage.removeItem("editUserId");
     // localStorage.setItem("editUserId", user.id.toString());
     // this.router.navigate(['edit-user']);
-    // var userid =localStorage.setItem("editUserId", user.id.toString());
-    var userid = "test";
+    var userid =localStorage.setItem("editUserId", user.id.toString());
     this.open(content,userid);
   };
   open(content,userid:any) {
-    if(userid != null)
-    {
-      this.getTitle = "Edit Profile";
-    }
-    else{
-      this.getTitle = "User Profile";
-    }
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {

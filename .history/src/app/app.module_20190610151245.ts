@@ -8,7 +8,7 @@ import { CreateComponent } from './user/create/create.component';
 import { AppRoutingModule } from './app-routing.module';
 import {UserService} from "./dataServices/user.service";
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,9 +20,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     HttpClientModule,
     AngularFontAwesomeModule,
-    NgbModule
   ],
-  exports: [UserlistComponent],
+  // entryComponents: [
+  //   NgbModalBackdrop
+  // ],
+
   providers: [UserService],
   bootstrap: [AppComponent]
   // schemas: [CUSTOM_ELEMENTS_SCHEMA]

@@ -7,7 +7,7 @@
             <div class="col-md-4 PaddDiv"><b><label class="lblFont">{{user.first_name}}</label> <br/>12/14/2019</b></div>
             <div class="col-md-4 PaddDiv" >
               <div class="col-md-12">
-                  <button class="btn btnFloat" (click)="editUser(user,content)" > <i class="fa fa-edit" aria-hidden="true"></i></button>
+                  <button class="btn btnFloat" (click)="editUser(user)" > <i class="fa fa-edit" aria-hidden="true"></i></button>
               </div>
               <div class="col-md-12">
                   <button class="btn btnFloat" (click)="deleteUser(user)" > <i class="fa fa-trash" aria-hidden="true"></i></button>
@@ -20,7 +20,7 @@
         </div>
         <ng-template #content let-modal>
           <div class="modal-header">
-            <h4 class="modal-title" id="modal-basic-title">{{getTitle}}</h4>
+            <h4 class="modal-title" id="modal-basic-title">User profile</h4>
             <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
               <span aria-hidden="true">&times;</span>
             </button>
